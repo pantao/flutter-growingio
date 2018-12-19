@@ -47,8 +47,19 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: <Widget>[
+            Text('Running on: $_platformVersion\n'),
+            RaisedButton(
+              child: Text('Click event'),
+              onPressed: () {
+                Growingio.track('clicked', number: 0, variable: {
+                  "key": "value",
+                  "foo": "bar"
+                });
+              },
+            )
+          ],
         ),
       ),
     );
